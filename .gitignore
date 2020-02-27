@@ -1,3 +1,10 @@
+# IntelliJ IDE settings
+.idea/
+
+# AWS SAM config
+.aws-sam/
+samconfig.toml
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

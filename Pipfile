@@ -1,0 +1,6 @@
+[dev-packages]
+boto3 = "*"
+botocore = "*"
+pytest = "*"
+awscli = "*"
+aws-sam-cli = "*"

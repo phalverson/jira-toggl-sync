@@ -1,0 +1,35 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  jira-toggle-sync
+
+  Webhooks to synchronize Jira issues with Toggl project tasks
+
+Globals:
+  Function:
+    Timeout: 3
+
+Resources:
+  HandleWebhookFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: jts/
+      Handler: handler.handle_webhook
+      Runtime: python3.7
+      Events:
+        Webhook:
+          Type: Api
+          Properties:
+            Path: /update
+            Method: post
+
+Outputs:
+  Api:
+    Description: "API Gateway endpoint URL for Prod stage for Handle Webhook function"
+    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/update/"
+  LambdaFunction:
+    Description: "Handle Webhook lambda function ARN"
+    Value: !GetAtt HandleWebhookFunction.Arn
+  LambdaFunctionIamRole:
+    Description: "IAM Role created for Handle Webhook labmda function"
+    Value: !GetAtt HandleWebhookFunction.Arn

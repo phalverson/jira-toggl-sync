@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "incremental": true,
+  "loggers": {
+    "jts": {
+      "level": "DEBUG"
+    }
+  }
+}
